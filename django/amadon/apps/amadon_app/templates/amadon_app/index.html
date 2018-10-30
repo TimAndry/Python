@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        #wrapper {
+            margin: auto;
+            width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='wrapper'>
+        <h1>Amadon Store</h1>
+        <table class="table table-hover table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Dojo Tshirt</th>
+                    <form action='/total' method='POST'>
+                        {% csrf_token %}
+                        <td><input type='hidden' name='it_em' value ='1' >19.99</td>
+                        <td>
+                            <div class="col-auto my-1">
+                                <select name="number" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-success">Buy!</button>
+                        </td>
+                    </form>
+                </tr>
+                <tr>
+                    <th scope="row">Dojo Sweater</th>
+                    <form action='/total' method='POST'>
+                        {% csrf_token %}
+                        <td><input type='hidden' name='it_em' value ='2' >29.99</td>
+                        <td>
+                            <div class="col-auto my-1">
+                                <select name="number" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-success">Buy!</button>
+                        </td>
+                    </form>
+                </tr>
+                <tr>
+                    <th scope="row">Dojo Cup</th>
+                    <form action='/total' method='POST'>
+                        {% csrf_token %}
+                        <td><input type='hidden' name='it_em' value ='3' >4.99</td>
+                        <td>
+                            <div class="col-auto my-1">
+                                <select name="number" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-success">Buy!</button>
+                        </td>
+                    </form>
+                </tr>
+                <tr>
+                    <th scope="row">Algorithm Book</th>
+                    <form action='/total' method='POST'>
+                        {% csrf_token %}
+                        <td><input type='hidden' name='it_em' value ='4' >49.99</td>
+                        <td>
+                            <div class="col-auto my-1">
+                                <select name="number" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-success">Buy!</button>
+                        </td>
+                    </form>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

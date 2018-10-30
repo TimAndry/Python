@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Random DNA</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        #wrapper {
+            margin: auto;
+            margin-top: 80px;
+            text-align: center;
+            width: 85%;
+            font-family: sans-serif;
+        }
+
+        #wrapper h2 {
+            margin: auto;
+            margin-bottom: 50px;
+            padding: 20px;
+            width: 80%;
+            background-color: #555;
+            border-radius: 15px;
+            display: block;
+            color: white;
+        }
+
+        #wrapper h1 {
+            margin: auto;
+            width: 80%;
+            padding: 100px 0 100px 0;
+            border-radius: 15px;
+            background-color: #900;
+            display: block;
+            color: white;
+        }
+
+        #generate {
+            margin: auto;
+            margin-top: 30px;
+        }
+
+        #generate form{
+            margin: auto;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <h2>Random DNA strand {{request.session.count}}</h2>
+        <h3>Generate a random strand of DNA to start creating your super creature</h3>
+        <h1>{{request.session.dna}}</h1>
+        <div id="generate">
+            <form action='/result' method='GET'>
+                {% csrf_token %}<!--dont forget this-->
+                <button name="button1" value="1" type="submit" class="btn btn-success">Generate</button>
+            </form>
+            <form action='/clear' method='GET'>
+                <button name="button2" value="1" type="submit" class="btn btn-danger">Reset</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

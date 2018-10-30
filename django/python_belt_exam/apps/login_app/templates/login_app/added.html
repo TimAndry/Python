@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=for, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+    <style>
+        #wrapper {
+            margin: auto;
+            width: 80%;
+            margin-top: 100px;
+        }
+
+        #image {
+            margin: auto;
+            display: inline-block;
+            width: 25%;
+            border: 1px solid rgb(95, 94, 94);
+            border-radius: 5px;
+            height: 200px;
+        }
+
+        #intro {
+            margin: auto;
+            display: inline-block;
+            vertical-align: top;
+            width: 35%;
+            margin-left: 2%;
+        }
+
+        #add_message {
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        #wall {
+            margin-bottom: 50px;
+        }
+
+        .messages {
+            color: red;
+        }
+
+        .btn.btn-success {
+            display: block;
+            margin-top: 10px;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        #intro {
+            margin: auto;
+            display: inline-block;
+            vertical-align: top;
+            width: 35%;
+            margin-left: 2%;
+        }
+
+        #comments {
+            margin: auto;
+            width: 80%;
+            margin-top: 30px;
+            margin-left: 10%;
+            padding: 10px;
+        }
+
+        .messages {
+            color: red;
+        }
+
+        .comment {
+            background-color: white;
+            padding: 3px;
+        }
+
+        #comments h5 {
+            text-align: right;
+            color: #aaa;
+            font-size: 0.85em;
+        }
+
+        .this_comment {
+            padding: 5px;
+            margin-top: 5px;
+            border-radius: 5px;
+        }
+
+        .this_comment p {
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 1px 1px 7px #ddd;
+            color: #888;
+        }
+
+        .blue {
+            color: rgb(59, 87, 148)
+        }
+
+        .cloud {
+            padding: 25px;
+            border-radius: 10px;
+            color: #555;
+        }
+
+        #logout_button {
+            margin-left: 3px;
+            margin-right: 20px;
+        }
+
+        #quotes {
+            margin: auto;
+            margin-top: 30px;
+
+        }
+
+        #quoted {
+            box-shadow: 1px 1px 15px #ccc;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #quotes h4 {
+            margin: auto;
+            margin-top: 30px;
+        }
+
+        #quotes a {
+            color: blue;
+        }
+
+        #deleted {
+            display: inline-block;
+            width: 75px;
+        }
+        
+        #liked{
+            display: inline-block;
+            width: 75px;
+        }
+
+        footer{
+            margin:auto;
+            height:250px;
+            background-color: #333;
+            margin-top: 175px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">Home</a>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/full">Quotes
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                {% if 'user_id' in request.session %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/{{user.id}}">{{user.first_name}}'s page</a>
+                </li>
+            </ul>
+            <form action='/logout' method='POST'>
+                {% csrf_token %}
+                <button type='submit' id='logout_button' class="btn btn-primary btn-sm">logout</button>
+            </form>
+            {% endif %}
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <div id='wrapper'>
+        
+        <h3>This is {{user.first_name}}'s page</h3>
+        <p>These are the quotes that {{user.first_name}} posted</p>
+        <br>
+        {% for quote in quote %}
+        
+        <div id='quoted'>
+            <h4>{{quote.this_quote}}</h4>
+            <p>{{quote.author}}</p>
+            <P><span class='messages'>{{quote.liked_users.count}}</span> likes</P>
+            {% if request.session.user_id == user.id %}
+                <form action='/del2ete' method='POST' id='deleted'>
+                    {% csrf_token %}
+                    <input type='hidden' value={{quote.id}} name='delete_button'>
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            {% endif %}
+            <form action='/like' method='POST' id='liked'>
+                {% csrf_token %}
+                <input type='hidden' value={{user.id}} name='user'>
+                <input type='hidden' value={{quote.id}} name='quote'>
+                <button type="submit" class="btn btn-success btn-sm">Like</button>
+            </form>
+        </div>
+        
+        {% endfor %}
+    </div>
+    <footer></footer>
+</body>
+
+</html>

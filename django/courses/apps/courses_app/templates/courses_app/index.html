@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        #wrapper {
+            margin: auto;
+            width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <h1>Add a new course</h1>
+        <form action="/create" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="Name">Name:</label>
+                <input type="text" name="name" class="form-control" id="name" aria-describedby="namehelp" placeholder="Enter a course name">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Description</label>
+                <textarea class="form-control" name = "desc" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+        <br><br>
+        <table class="table table-striped table-dark">
+            {% if courses|length > 0 %}
+            <thead>
+                <tr>
+                    <th scope="col">Course Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Date Added</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses %}
+                <tr>
+                    <td>{{course.name}}</td>
+                    <td>{{course.description}}</td>
+                    <td>{{course.date_added}}</td>
+                    <td><a href='/edit/{{course.id}}'>remove</a></td>
+                </tr>            
+                {% endfor %}
+            </tbody>
+            {% endif %}
+        </table>
+    </div>
+</body>
+
+</html>

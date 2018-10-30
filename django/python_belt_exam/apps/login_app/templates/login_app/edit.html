@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=for, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        #wrapper {
+            margin: auto;
+            width: 80%;
+            margin-top: 100px;
+        }
+
+        #image {
+            margin: auto;
+            display: inline-block;
+            width: 25%;
+            border: 1px solid rgb(95, 94, 94);
+            border-radius: 5px;
+            height: 200px;
+        }
+
+        #intro {
+            margin: auto;
+            display: inline-block;
+            vertical-align: top;
+            width: 35%;
+            margin-left: 2%;
+        }
+
+        #add_message {
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        #wall {
+            margin-bottom: 50px;
+        }
+
+        .messages {
+            color: red;
+        }
+
+        .btn.btn-success {
+            display: block;
+            margin-top: 10px;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        #intro {
+            margin: auto;
+            display: inline-block;
+            vertical-align: top;
+            width: 35%;
+            margin-left: 2%;
+        }
+
+        #comments {
+            margin: auto;
+            width: 80%;
+            margin-top: 30px;
+            margin-left: 10%;
+            padding: 10px;
+        }
+
+        .messages {
+            color: red;
+        }
+
+        .comment {
+            background-color: white;
+            padding: 3px;
+        }
+
+        #comments h5 {
+            text-align: right;
+            color: #aaa;
+            font-size: 0.85em;
+        }
+
+        .this_comment {
+            padding: 5px;
+            margin-top: 5px;
+            border-radius: 5px;
+        }
+
+        .this_comment p {
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 1px 1px 7px #ddd;
+            color: #888;
+        }
+
+        .blue {
+            color: rgb(59, 87, 148)
+        }
+
+        .cloud {
+            padding: 25px;
+            border-radius: 10px;
+            color: #555;
+        }
+
+        #logout_button {
+            margin-left: 3px;
+            margin-right: 20px;
+        }
+
+        #quotes {
+            margin: auto;
+            margin-top: 30px;
+
+        }
+
+        #quoted {
+            box-shadow: 1px 1px 15px #ccc;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #quotes h4 {
+            margin: auto;
+            margin-top: 30px;
+        }
+
+        #quotes a {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='wrapper'>
+        <h2>Edit {{user.first_name}}'s user information</h2>
+        <form action="/update/{{request.session.user_id}}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="firstname">First Name</label>
+                {% if messages %} {% for message in messages %} {% if 'fname' in message.tags %}
+                <p class='messages'> {{message}} </p>
+                {% endif %} {% endfor %} {% endif %}
+                <input name="fname"  value={{user.first_name}} type="text" class="form-control" id="fname" aria-describedby="emailHelp" placeholder="First Name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Last Name</label>
+                {% if messages %} {% for message in messages %} {% if 'lname' in message.tags %}
+                <p class='messages'> {{message}} </p>
+                {% endif %} {% endfor %} {% endif %}
+                <input name="lname" value={{user.last_name}} type="text" class="form-control" id="lname" aria-describedby="emailHelp" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                {% if messages %} {% for message in messages %} {% if 'email' in message.tags %}
+                <p class='messages'> {{message}} </p>
+                {% endif %} {% endfor %} {% endif %}
+                <input name="email" value={{user.email}} type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <!--<div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                {% if messages %} {% for message in messages %} {% if 'password' in message.tags %}
+                <p class='messages'> {{message}} </p>
+                {% endif %} {% endfor %} {% endif %}
+                <input name='password' type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Confirm Password</label>
+                {% if messages %} {% for message in messages %} {% if 'check_password' in message.tags %}
+                <p class='messages'> {{message}} </p>
+                {% endif %} {% endfor %} {% endif %}
+                <input name="check_password" type="password" class="form-control" id="exampleInputPassword1">
+            </div>-->
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

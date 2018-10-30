@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Session Words</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        #container {
+            margin: auto;
+            width: 80%;
+            min-width: 920px;
+            vertical-align: top;
+        }
+
+        #container h1 {
+            margin: auto;
+            margin-bottom: 80px;
+            text-align: center;
+            display: block;
+        }
+
+        #container h2 {
+            margin-top: 0px;
+        }
+
+        #container h3 {
+            margin-top: 50px;
+        }
+
+        #leftside {
+            margin: auto;
+            display: inline-block;
+            width: 48%;
+            padding: 20px;
+            vertical-align: top;
+            height: 460px;
+            border-radius: 10px;
+            background-color: rgb(230, 224, 197)
+        }
+
+        #leftside button {
+            margin: auto;
+            width: 70px;
+            margin-top: 20px;
+        }
+
+        #rightside {
+            margin: auto;
+            margin-left: 25px;
+            display: inline-block;
+            width: 48%;
+            padding: 10px;
+            vertical-align: top;
+            background-color: rgb(204, 31, 31);
+            border-radius: 10px;
+        }
+
+        #rightside h2 {
+            text-align: right;
+            color: white;
+        }
+
+        #list {
+            margin: auto;
+            height: 399px;
+            box-shadow: inset 2px 2px 10px #aaa;
+            border-radius: 5px;
+            overflow:scroll;
+            background-color: white;
+        }
+        #list h4{
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='container'>
+        <h1>Colorful words!</h1>
+        <div id='leftside'>
+            <h2>Add a new word</h2>
+            <form action='/update' method='POST'>
+                {% csrf_token %}
+                <div class="form-group row">
+                    <input type="text" name="word" class="form-control" id="word" placeholder="Just one!...or not.">
+                </div>
+                <h3>Choose a color</h3>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="color" id="exampleRadios1" value="red" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        red
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="color" id="exampleRadios2" value="green">
+                    <label class="form-check-label" for="exampleRadios2">
+                        green
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="color" id="exampleRadios2" value="blue">
+                    <label class="form-check-label" for="exampleRadios2">
+                        blue
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" name="fontsize" type="checkbox" value="l"> Show word in BIG fonts!
+                    </label>
+                </div>
+                <button type="submit" name="submit" class="btn btn-success">Submit</button>
+            </form>
+            <form action='/clear' method='POST'>
+                {% csrf_token %}
+                <button type="submit" name="submit" class="btn btn-danger">Reset</button>
+            </form>
+        </div>
+        <div id='rightside'>
+            <h2>Words in this session</h2>
+            <div id="list">
+                {%for i in request.session.words %}
+                    {{i | safe}}
+                {%endfor%}
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

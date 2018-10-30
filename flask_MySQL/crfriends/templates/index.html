@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Dojo Survey</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        #wrapper {
+            margin: auto;
+            width: 85%;
+        }
+
+        th {
+            background-color: red;
+            color: white;
+        }
+
+        table {
+            margin-top: 100px;
+        }
+
+        form {
+            display: inline-block;
+            margin-top: 30px;
+            margin-right: 10px;
+            width: 48%;
+            vertical-align: top;
+        }
+
+        h3 {
+            display: inline-block;
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+
+        .red{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="forms">
+            <form action='/page' method='POST'>
+                <h3>Search for a friend</h3>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Search friends: </label>
+                    <input type="text" name="friend" class="form-control" id="exampleFormControlInput1" placeholder="find a friend">
+                </div>
+                <button name="submit" type="submit" class="btn btn-primary">Search</button>
+            </form>
+
+            <form action='/database' method='post'>
+                <h3>Add a friend or yourself</h3>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">First Name:</label>
+                    <input type="text" name="fname" class="form-control" id="exampleFormControlInput1" placeholder="Enter your first name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Last Name:</label>
+                    <input type="text" name="lname" class="form-control" id="exampleFormControlInput1" placeholder="Enter your last name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Occupation:</label>
+                    <input type="text" name="occupation" class="form-control" id="exampleFormControlInput1" placeholder="Enter your occupation">
+                </div>
+                <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+                <br>
+                <p class='red'>{{message}}</p>
+            </form>
+        </div>
+        <table class="table table-hover table-dark thead-dark">
+            <thead>
+                <tr>
+                    {% for i in range(keys | length) %}
+                        <th scope="col">{{keys[i]}}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in range(fname | length) %}
+                <tr>
+                    <td>{{fname[i]}}</td>
+                    <td>{{lname[i]}}</td>
+                    <td>{{occupation[i]}}</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

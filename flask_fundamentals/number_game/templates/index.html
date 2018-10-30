@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Great Number Game!</title>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div id="wrapper">
+        <h1>Welcome to the Great <img id="hashtag" src ="{{ url_for('static', filename='img/hashtag.gif') }}"> Game!</h1>
+        <p>Guess the number betweeen <span>1</span> and <span>100</span></p>
+        <!--<p>Correct guesses are worth 10 points, incorrect guesses give me 10 points</p>-->
+        <div id="guess">
+            <h2>Your guess: <span>{{session['guess']}}</span></h2>
+            <h2>Attempts: <span>{{session['count']}}</span></h2>
+        </div>
+        <div id="image1">
+            <img src="{{ url_for('static', filename='img/' + image) }}">
+        </div>
+        <h3>{{congrats | safe}}</h3>
+        <div id="forms">
+            <form action='/startover' method='get'>
+                <button name="button2" value="1" type="submit" class="btn btn-danger">Restart!!</button>
+            </form>
+            <form action='/pick_num' method='get' autocomplete="off">
+                <input name="guess" type={{value}} placeholder="" autofocus="autofocus">
+                <button name="button1" value="1" type="submit" style="{{value2}}" class="btn btn-success">Guess</button>
+            </form> 
+        </div>
+    </div>
+</body>
+
+</html>

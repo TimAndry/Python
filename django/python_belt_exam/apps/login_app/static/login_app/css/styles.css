@@ -1,0 +1,171 @@
+#wrapper {
+    margin: auto;
+    width: 80%;
+    margin-top: 100px;
+}
+
+#register{
+    margin: auto;
+    display: inline-block;
+    width: 35%;
+}
+
+#login{
+    margin: auto;
+    display: inline-block;
+    vertical-align: top;
+    width: 35%;
+    margin-left: 28%;
+}
+
+h1 {
+    display: block;
+    background-color: firebrick;
+    color: white;
+    padding: 25px 0 10px 10px;
+}
+
+#image {
+    margin: auto;
+    display: inline-block;
+    width: 25%;
+    border: 1px solid #000;
+    height: 175px;
+}
+
+#intro {
+    margin: auto;
+    display: inline-block;
+    vertical-align: top;
+    width: 35%;
+}
+
+#add_message {
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 70px;
+    background-color: #ddd;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+#quotes {
+    margin: auto;
+    margin-top: 50px;
+}
+
+#comments {
+    margin: auto;
+    width: 80%;
+    margin-top: 30px;
+    margin-left: 10%;
+    padding: 10px;
+}
+
+.messages {
+    color: red;
+}
+
+.comment {
+    background-color: white;
+    padding: 3px;
+}
+
+#comments h5 {
+    text-align: left;
+    color: #aaa;
+    font-size: 0.85em;
+}
+
+.this_comment {
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.this_comment p {
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    background-color: rgb(51, 119, 207);
+    display: inline-block;
+    text-align: right;
+    margin: 10px 0 15px 0;
+}
+
+.blue {
+    color: rgb(59, 87, 148)
+}
+
+.cloud {
+    padding: 25px;
+    border-radius: 10px;
+    color: #555;
+}
+
+#logout_button {
+    margin-left: 3px;
+    margin-right: 20px;
+}
+
+#quotes {
+    margin: auto;
+    margin-top: 30px;
+
+}
+
+#quoted {
+    box-shadow: 1px 1px 15px #ccc;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#quotes h4 {
+    margin: auto;
+    margin-top: 30px;
+}
+
+#quotes a {
+    color: blue;
+}
+
+#deleted {
+    display: inline-block;
+    width: 75px;
+}
+
+#liked{
+    display: inline-block;
+    width: 75px;
+}
+
+footer{
+    margin:auto;
+    height:250px;
+    background-color: #333;
+    margin-top: 175px;
+}
+
+#err_wrapper *{
+    margin: auto;
+    text-align: center;
+}
+
+#err_wrapper h4{
+    width: 500px;
+}
+
+#err_img{
+    margin: auto;
+    display: block;
+    text-align: center;
+    margin-top:20px;
+    margin-bottom: 50px;
+}
+
+#err_wrapper button{
+    margin: auto;
+    display: block;
+    margin-top: 25px;
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leads and Clients</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/canvasjs.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.canvasjs.min.js') }}"></script>
+    <!--
+        creates a chart for the listed data, but the page only renders the chart and not the table so I left if commented out
+        <script>
+            window.onload = function () {
+                
+                var options = {
+                    title: {
+                        text: "Customers"
+                    },
+                    data: [{
+                        type: "pie",
+                        startAngle: 45,
+                        showInLegend: "true",
+                        legendText: "{label}",
+                        indexLabel: "{label} ({y})",
+                        yValueFormatString: "#,##0.#" % "",
+                        dataPoints: [
+                        {% for j in range(names | length) %}
+                            { label: "{{names[j]}}", y: "{{leads[j]}}" },
+                        {%endfor%}
+                        ]
+                    }]
+                };
+                $("#chartContainer").CanvasJSChart(options);
+    
+            }                                
+        </script>-->
+    <style>
+        #wrapper {
+            display: inline-block;
+            margin: auto;
+            width: 85%;
+        }
+
+        th {
+            background-color: red;
+            color: white;
+        }
+
+        table {
+            margin-top: 100px;
+        }
+
+        form {
+            display: inline-block;
+            margin-top: 30px;
+            margin-right: 10px;
+            width: 48%;
+            vertical-align: top;
+        }
+
+        h3 {
+            display: inline-block;
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+   
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="chartContainer">
+
+
+            <table class="table table-hover table-dark thead-dark">
+                <thead>
+                    <tr>
+                        {% for i in range(keys | length) %}
+                        <th scope="col">{{keys[i]}}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in range(names | length) %}
+                    <tr>
+                        <td>{{names[i]}}</td>
+                        <td>{{leads[i]}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</body>
+
+</html>

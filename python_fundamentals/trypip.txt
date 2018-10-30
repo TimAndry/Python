@@ -1,0 +1,19 @@
+﻿1. Django was installed
+
+2. Shows a list of folders and files associated with pip
+
+3. shuts down the virtual environment
+
+4. pytz, pip, and wheel dont show in the list while virtualenv now shows
+
+5. reactivates virtual environment
+
+6. message shows requirements are already met
+
+7. only django and pytz versions appear
+
+8. removes Django
+
+9. nothing appears when running pip show Django
+
+10. shows a list of flask extensions

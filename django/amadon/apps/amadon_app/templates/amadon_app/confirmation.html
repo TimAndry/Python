@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        #wrapper {
+            margin: auto;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <div id='wrapper'>
+        <h2>you have ordered {{request.session.total_number}} {{name}}s</h2>
+        <h3>Total: ${{request.session.total_price}}</h3>
+        <h4>You have bought {{request.session.total_items}} items so far</h4>
+        <h4>You have spent ${{request.session.total_spent}}</h4>
+        <a href='/'>go back</a>
+    </div>
+</body>
+</html>

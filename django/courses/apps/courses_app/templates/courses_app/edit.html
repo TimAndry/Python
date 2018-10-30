@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        #wrapper {
+            margin: auto;
+            width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='wrapper'>
+        <h2>Are you sure you want to delete the following course?</h2>
+        <p>Name: {{course.name}}</p>
+        <p>Description: {{course.description}}</p>
+        <br>
+        <form action='/no' method='POST'>
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">No</button>
+        </form>
+        <br>
+        <form action='/delete/{{course.id}}'>
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Yes! I want to delete this class.</button>
+        </form>
+    </div>
+</body>
+
+</html>

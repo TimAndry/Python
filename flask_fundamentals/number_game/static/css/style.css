@@ -1,0 +1,102 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'impact', sans-serif;
+}
+
+h1{
+    background-color: black;
+    color: #ddd;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#wrapper{
+    margin: auto;
+    margin-top: 5%;
+    text-align: center;
+    min-width: 650px;
+    max-width: 700px;
+    height: 750px;
+    padding-top: 20px;
+    border-radius: 10px;
+}
+
+
+#wrapper img{
+    height: 300px;
+}
+
+#wrapper #hashtag{
+    height: 50px;
+    width: 50px;
+}
+
+form{
+    display: inline-block;
+    margin-bottom: 10px;
+    vertical-align: top;
+}
+form input{
+    display: inline-block;
+    margin: auto;
+    text-align: center;
+    height: 100px;
+    width: 100px;
+    font-size: 3em;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 9px #aaa;
+}
+
+form button{
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
+    vertical-align: top;
+}
+
+#image1{
+    display: inline-block;
+}
+
+#forms{
+    display: inline-block;
+}
+
+.btn{
+    vertical-align: top;
+    font-size: 1.3em;
+}
+
+
+#guess h2{
+    display: inline-block;
+    background-color: black;
+    width: 275px;
+    padding: 15px;
+    border-radius: 10px;
+    color: #ddd;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+
+span{
+    color: #f00;
+}
+
+p{
+    font-size: 2em;
+}
+
+input:focus{
+    outline: none;
+}
+
+h3{
+    color: rgb(30, 172, 30);
+    font-size: 2.5em;
+}

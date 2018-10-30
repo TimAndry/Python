@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja Gold</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'gold_app/css/ninja_gold_style.css' %}">
+</head>
+
+<body>
+    <div id="intro">
+        <h1>Ninja Gold</h1>
+        <img src="{% with 'gold_app/img/'|add:request.session.image as image_static %}
+            {% static image_static %} 
+        {% endwith %}">
+    </div>
+    <div id="bankaccount">
+        <h3>your gold:
+            <span class="green">{{request.session.total_gold}}</span>
+        </h3>
+    </div>
+    <div id="jobs">
+        <div class="jobtitle">
+            <h3>Farm</h3>
+            <p>(earns 10-20 gold)</p>
+            <form action='/process_money' method='POST'>
+                {% csrf_token %}
+                <input type="hidden" name="farmgold" value="{{gold_amount}}">
+                <button name="farmgold" type="submit" class="btn btn-success">Find Gold!</button>
+            </form>
+        </div>
+        <div class="jobtitle">
+            <h3>Cave</h3>
+            <p>(earns 5-10 gold)</p>
+            <form action='/process_money' method='POST'>
+                {% csrf_token %}
+                <input type="hidden" name="cavegold" value="{{gold_amount}}">
+                <button name="submit" type="submit" class="btn btn-success">Find Gold!</button>
+            </form>
+        </div>
+        <div class="jobtitle">
+            <h3>House</h3>
+            <p>(earns 2-5 gold)</p>
+            <form action='/process_money' method='POST'>
+                {% csrf_token %}
+                <input type="hidden" name="housegold" value="{{gold_amount}}">
+                <button name="submit" type="submit" class="btn btn-success">Find Gold!</button>
+            </form>
+        </div>
+        <div class="jobtitle">
+            <h3>Casino</h3>
+            <p>(earns/loses 1-50 gold)</p>
+            <form action='/process_money' method='POST'>
+                {% csrf_token %}
+                <input type="hidden" name="casinogold" value="{{gold_amount}}">
+                <button name="submit" type="submit" class="btn btn-success">Find Gold!</button>
+            </form>
+        </div>
+    </div>
+    <div id="activities">
+        <h3>activities</h3>
+        <div class="activities">
+            {%for result in request.session.display_result%}
+                {{result | safe}}
+            {%endfor%}
+        </div>
+    </div>
+    <form action='/reset' method='post' class='reset'>
+        {% csrf_token %}
+        <button name="reset" value="startover" type="submit" class="btn btn-danger">Reset my monies!!</button>
+    </form>
+</body>
+
+</html>
